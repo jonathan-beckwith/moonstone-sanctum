@@ -75,6 +75,10 @@ async function shouldRespond(avatar, conversation, locations) {
         return false;
     }
 
+    if (recentConversation[recentConversation.length - 2].author === avatar.name) {
+        return false;
+    }
+
     if (avatar.force) {
         // In force state only respond to human messages
         return !conversation[conversation.length - 1].bot;
@@ -112,7 +116,7 @@ async function generateResponse(avatar, conversation) {
     const recentConversation = conversation.slice(-25);
     const response = await waitForTask(avatar, [
         ...recentConversation,
-        { role: 'user', content: avatar.response_style || 'Provide a short response to the above conversation.' }
+        { role: 'user', content: avatar.response_style || `Provide a short response to the above conversation as ${avatar.name}, ${avatar.personality}` }
     ]);
 
     console.log(`🤖 Response from ${avatar.name}:\n${response}`);

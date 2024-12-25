@@ -5,4 +5,3 @@ export const ENQUEUE_API = `http://localhost:${PORT}/discord/enqueue`;
 export const MESSAGES_API = `http://localhost:${PORT}/discord/messages`;
 export const LOCATIONS_API = `http://localhost:${PORT}/discord/locations`;
 export const AVATARS_API = `http://localhost:${PORT}/api/avatars`;
-
